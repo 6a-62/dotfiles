@@ -30,7 +30,7 @@ colors:
 background-opacity: 0.5
 window:
   opacity: 0.85
-#  decorations: none
+  decorations: buttonless
 title: 	=＾• ⋏ •＾= ᵐᵉᵒʷˎˊ˗
 dynamic-title: false
 transparent_background_colors: true
@@ -144,7 +144,7 @@ transparent_background_colors: true
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -212,7 +212,7 @@ transparent_background_colors: true
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  #use_thin_strokes: true
+  use_thin_strokes: true
 
   # Use built-in font for box drawing characters.
   #
@@ -469,8 +469,8 @@ transparent_background_colors: true
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /usr/local/bin/fish
 #  args:
 #    - --login
 
