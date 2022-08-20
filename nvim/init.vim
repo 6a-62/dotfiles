@@ -1,53 +1,41 @@
-set nocompatible            " disable compatibility to old-time vi
-set showmatch               " show matching 
-set ignorecase              " case insensitive 
-set mouse=v                 " middle-click paste with 
-set hlsearch                " highlight search 
-set incsearch               " incremental search
-set autoindent              " indent a new line the same amount as the line just typed
-set number                  " add line numbers
-set wildmode=longest,list   " get bash-like tab completions
-"set cc=80                  " set an 80 column border for good coding style
-filetype plugin indent on   "allow auto-indenting depending on file type
-syntax on                   " syntax highlighting
-set mouse=a                 " enable mouse click
-set clipboard=unnamedplus   " using system clipboard
-filetype plugin on
-"set cursorline              " highlight current cursorline
+lua require('plugins')
 
-" PLUGINS
-call plug#begin()
- " Plugin Section
- Plug 'dracula/vim'
- Plug 'nvim-lua/plenary.nvim'
- Plug 'nvim-telescope/telescope.nvim'
- Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
- Plug 'phaazon/hop.nvim'
- Plug 'lukas-reineke/indent-blankline.nvim'
- "Plug 'ryanoasis/vim-devicons'
- "Plug 'SirVer/ultisnips'
- "Plug 'honza/vim-snippets'
- "Plug 'scrooloose/nerdtree'
- Plug 'preservim/nerdcommenter'
- "Plug 'mhinz/vim-startify'
- "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
+" Behaviour
+set encoding=utf-8
+set mouse=a
+set clipboard=unnamed
 
-" COLOR SCHEME
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set autoindent
+
+set wildmode=longest:list,full
+set wildmenu
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Apperance
+set number
+set showmatch
+set splitbelow 
+set scrolloff=3
+
 colorscheme dracula
-"set termguicolors
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight StatusLine ctermbg=darkblue ctermfg=black
-highlight ColorColumn ctermbg=0
-highlight Visual cterm=reverse
-highlight Visual ctermbg=none
-highlight IndentBlanklineChar ctermfg=black
+highlight normal ctermbg=none
+highlight StatusLine ctermfg=0 ctermbg=lightblue  
 
-" KEY MAPPINGS
-" Find files using Telescope command-line sugar.
-" theme: dropdown, cursor, ivy
-nnoremap <leader>ff <cmd>Telescope find_files theme=dropdown<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep theme=dropdown<cr>
-nnoremap <leader>fb <cmd>Telescope buffers theme=dropdown<cr>
-nnoremap <leader>fm <cmd>Telescope theme=dropdown<cr>
+" Keybinds
+" clear hl on spacebar
+noremap <silent> <Space> :silent noh<CR>:pclose<Bar>echo<CR>
+" extra LSP stuff
+noremap gt :tab split<CR>:lua vim.lsp.buf.definition()<CR>
+COQnow [--shut-up]
+" open file browser
+noremap <leader>f <cmd>CHADopen<cr>
+" open tag browser
+noremap <leader>t <cmd>Tagbar<cr>
